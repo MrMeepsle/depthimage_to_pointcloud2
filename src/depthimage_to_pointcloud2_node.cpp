@@ -55,6 +55,8 @@ private:
         cloud_msg->width = depth_msg->width;
         cloud_msg->is_dense = false;
         cloud_msg->is_bigendian = false;
+        sensor_msgs::PointCloud2Modifier pcd_modifier(*cloud_msg);
+        pcd_modifier.setPointCloud2FieldsByString(1, "xyz");
 
         image_geometry::PinholeCameraModel model;
         model.fromCameraInfo(g_cam_info);
